@@ -1,5 +1,15 @@
-oussema:
-  prop:
-    value:1
-  prop2:
-    value:2
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/students_db
+    username: postgres
+    password: Fnatic123#
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

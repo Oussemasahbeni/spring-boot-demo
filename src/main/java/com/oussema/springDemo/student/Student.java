@@ -1,11 +1,22 @@
 package com.oussema.springDemo.student;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.Period;
+
+@Entity
+@Table (name="student")
 public class Student {
+
+    @Id
+    @GeneratedValue
+    private int id;
     private String Firstname;
     private String Lastname;
+    @Column (unique = true)
     private String email;
+    @Transient
     private int age;
 
     private LocalDate dateofbirth;
@@ -20,6 +31,14 @@ public class Student {
     }
 
     public Student() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -47,7 +66,7 @@ public class Student {
     }
 
     public int getAge() {
-        return age;
+        return Period.between(dateofbirth,LocalDate.now()).getYears();
     }
 
     public void setAge(int age) {
